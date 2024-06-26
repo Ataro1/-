@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="фон.css">
+  <link rel="icon" href="2.ico" type="image/x-icon" />
+  <title>Cправочник</title>
+  <style>
+  </style>
+</head>
+
+<body class="h-14 bg-white slider-thumb">
+  <div class="w-full bg-black h-20 flex">
+    <div class="w-full flex p-4">
+      <div
+        class="flex absolute top-1  rounded-[10px] shadow-xl p-3 px-4 bg-orange-200 my-3 hover:bg-orange-400 hover:scale-[95%] transition ease-in-out delay-150">
+        <button id="menuBtn" class="flex items-center justify-center h-5 w-5">
+          <img src="icons8-меню.svg" alt="Menu" class="h-8 w-8" />
+        </button>
+      </div>
+      <div class="w-1/5 flex w-full items-center justify-center flex-row">
+        <p class="text-white scale-[3]"><strong>TESTRU</strong></p>
+      </div>
+    </div>
+    <div id="menu" class="menu bg-white p-4 z-50">
+      <p class="text-black scale-[1.5] my-4 pl-10">
+        <strong>ИНФОРМАЦИЯ</strong>
+      </p>
+      <button class="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded block mb-2">
+        <a href="Оформление.html">Главная</a>
+      </button>
+      <button class="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded block mb-2">
+        <a href="О нас.html">О сайте</a>
+      </button>
+      <button class="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded block mb-2">
+        <a href="https://t.me/Best1_Music1_Best1_bot">ТГ бот</a>
+      </button>
+    </div>
+  </div>
+  <div class="flex flex-col justify-center items-center">
+    <div class="bg-white w-full md:w-[900px] m-6 md:h-[13790px] rounded overflow-hidden shadow-xl">
+        <div class="flex flex-col items-center ml-5 z-40">
+            <p class="text-xl text-black text-center text-xl md:text-2xl py-5">
+                <strong>Ответы на все возможные вопросы</strong>
+            </p>
+            <div class="bg-black w-full md:w-[900px] h-2"></div>
+            <br><br><br><br><br>
+            <p class="text-xl text-black text-center text-[1.6] md:text-xl mt-3">
+                <strong>Ответы на вопросник по Играм</strong>
+            </p>
+            <div class="text-black text-center md:text-left mt-3" id="fileContent"></div>
+            <p class="text-xl text-black text-center text-[1.6] md:text-xl mt-3">
+                <strong>Ответы на вопросник по Истории</strong>
+            </p>
+            <div class="text-black text-center md:text-left mt-3" id="fileContent1"></div>
+            <p class="text-xl text-black text-center text-[1.6] md:text-xl mt-3">
+                <strong>Ответы на вопросник по Фильмам</strong>
+            </p>
+            <div class="text-black text-center md:text-left mt-3" id="fileContent2"></div>
+        </div>
+    </div>
+</div>
+  <script>
+
+    fetch('Ответы на игры.txt')
+      .then(response => response.arrayBuffer()) 
+      .then(buffer => {
+          const decoder = new TextDecoder('utf-8'); 
+          const text = decoder.decode(buffer); 
+          document.getElementById('fileContent').innerText = text;
+      })
+      .catch(error => console.error('Произошла ошибка:', error));
+
+      fetch('Ответы на историю.txt')
+      .then(response => response.arrayBuffer()) 
+      .then(buffer => {
+          const decoder = new TextDecoder('utf-8'); 
+          const text = decoder.decode(buffer); 
+          document.getElementById('fileContent1').innerText = text;
+      })
+      .catch(error => console.error('Произошла ошибка:', error));
+
+      fetch('Ответы на фильмы.txt')
+      .then(response => response.arrayBuffer()) 
+      .then(buffer => {
+          const decoder = new TextDecoder('utf-8'); 
+          const text = decoder.decode(buffer); 
+          document.getElementById('fileContent2').innerText = text;
+      })
+      .catch(error => console.error('Произошла ошибка:', error));
+
+
+    menuBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      menu.classList.toggle("open");
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+        menu.classList.remove("open");
+      }
+    });
+  </script>
+</body>
+
+</html>

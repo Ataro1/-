@@ -1,0 +1,74 @@
+body {
+    height: 100vh;
+     background: linear-gradient(90deg,#d6b72c,#e09420);
+  
+  }
+  
+  .slider-thumb::before {
+    position: absolute;
+    content: "";
+    top: 20%;
+    width: 370px;
+    height: 450px;
+    border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+    will-change: border-radius, transform, opacity;
+    display: block;
+    z-index: -1;  
+  }
+  @keyframes sliderShape{
+    0%,100%{
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      transform: translate3d(0,0,0) rotateZ(0.01deg);
+    }
+    34%{
+        border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+      transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+    }
+    50%{
+      transform: translate3d(0,0,0) rotateZ(0.01deg);
+    }
+    67%{
+      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+      transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+    }
+  }
+
+
+
+  .menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 240px;
+    }
+
+    .menu.open {
+      display: block;
+    }
+
+    .ad-container {
+      width: 300px;
+      height: 250px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .ad-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ad-text {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  
